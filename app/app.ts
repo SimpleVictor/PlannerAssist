@@ -20,4 +20,6 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp,[],{
+  iconMode: "md"
+});
