@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title id="add-task-title">Add Your Task</ion-title>
+    <ion-buttons>
+      <button class="scan-button" ion-button icon-only (click)="GoBack()">Back</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="add-task-page">
+
+  <ion-grid style="margin-top: 7%">
+    <ion-row>
+      <ion-col width-33 class="line-side"></ion-col>
+      <ion-col width-33 class="small-title" style="color: #666666">Basic Info</ion-col>
+      <ion-col width-33 class="line-side"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-list>
+
+    <ion-item class="item-input" style="border-top: 0">
+      <ion-label floating>Username</ion-label>
+      <ion-input style="color: #fff" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="item-input">
+      <ion-label floating>Description</ion-label>
+      <ion-textarea style="color: #fff"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col width-33 class="line-side"></ion-col>
+      <ion-col width-33 class="small-title" style="color: #666666">Extra</ion-col>
+      <ion-col width-33 class="line-side"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <!--<ion-item class="item-input" style="border-top: 0">-->
+    <!--<ion-label floating>Icon</ion-label>-->
+    <!--<ion-input type="text"></ion-input>-->
+  <!--</ion-item>-->
+
+
+  <ion-list inset>
+    <ion-item class="item-input" style="border-bottom: 1px solid white" tappable ion-button (click)="OpenIcons()">
+      Icon
+      <ion-icon name="rose" item-right style="color: #FFF;font-size:3em"></ion-icon>
+    </ion-item>
+
+
+    <ion-item class="item-input" style="border-bottom: 1px solid white">
+      <ion-toggle checked="true"></ion-toggle>
+      <ion-label>
+        Alerts
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <button block ion-button tappable (click)="AddTask()" color="secondary">Add Task</button>
+
+</ion-content>
+
