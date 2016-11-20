@@ -25,3 +25,16 @@ ion-content{
 .tab-button[aria-selected=true]{
   color: $main-color;
 }
+
+.toolbar-background{
+  background-color: #333333;
+  border-bottom-width: 0;
+}
+
+ion-tabbar{
+  background-color: #333333;
+  border-bottom: 4px solid #2E2E2E !important;
+}
+
+ion-tabs[tabsPlacement=top] {
+}
