@@ -9,6 +9,15 @@ declare var Circ;
   templateUrl: 'build/pages/tasks/TaskAdd/taskadd.html',
 })
 export class TasksAddPage {
+
+  finalSub= {
+    task_name: "",
+    task_desc: "",
+    alert: "true",
+    icon: "",
+    icon_color: ""
+  };
+
   constructor(public viewCtrl: ViewController, public modalCtrl: ModalController) {
     console.log("works");
   }
@@ -24,6 +33,14 @@ export class TasksAddPage {
 
   GoBack(){
     this.viewCtrl.dismiss();
+  }
+
+  submitTask(){
+    console.log(this.finalSub);
+  }
+
+  PopEverything(){
+    this.modalCtrl
   }
 
 

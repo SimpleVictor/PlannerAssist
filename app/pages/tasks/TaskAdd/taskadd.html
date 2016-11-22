@@ -22,13 +22,13 @@
   <ion-list>
 
     <ion-item class="item-input" style="border-top: 0">
-      <ion-label floating>Username</ion-label>
-      <ion-input style="color: #fff" type="text"></ion-input>
+      <ion-label floating>Task's Name</ion-label>
+      <ion-input [(ngModel)]="finalSub.task_name" style="color: #fff" type="text"></ion-input>
     </ion-item>
 
     <ion-item class="item-input">
-      <ion-label floating>Description</ion-label>
-      <ion-textarea style="color: #fff"></ion-textarea>
+      <ion-label floating>Task's Description</ion-label>
+      <ion-textarea [(ngModel)]="finalSub.task_name" style="color: #fff"></ion-textarea>
     </ion-item>
 
   </ion-list>
@@ -41,18 +41,10 @@
     </ion-row>
   </ion-grid>
 
-
-
-  <!--<ion-item class="item-input" style="border-top: 0">-->
-    <!--<ion-label floating>Icon</ion-label>-->
-    <!--<ion-input type="text"></ion-input>-->
-  <!--</ion-item>-->
-
-
   <ion-list inset>
     <ion-item class="item-input" style="border-bottom: 1px solid white" tappable ion-button (click)="OpenIcons()">
       Icon
-      <ion-icon name="rose" item-right style="color: #FFF;font-size:3em"></ion-icon>
+      <ion-icon name="ionic" item-right style="color: #FFF;font-size:3em"></ion-icon>
     </ion-item>
 
 
@@ -65,7 +57,7 @@
   </ion-list>
 
 
-  <button block ion-button tappable (click)="AddTask()" color="secondary">Add Task</button>
+  <button block ion-button tappable (click)="submitTask()" color="secondary">Add Task</button>
 
 </ion-content>
 
