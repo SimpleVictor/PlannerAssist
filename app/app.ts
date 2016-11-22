@@ -8,7 +8,7 @@ import {SimpleTask} from "./providers/SimpleTask";
 import {SimpleSaved} from "./providers/SimpleSaved";
 import {TestDB} from "./providers/TestDB";
 
-
+declare var cordova;
 @Component({
   providers: [SimpleSaved, SimpleTask, SimpleHome, TestDB],
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -18,6 +18,8 @@ export class MyApp {
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

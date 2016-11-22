@@ -1,9 +1,9 @@
 .task-page{
 
   .add-row{
-    position: relative;
+    //position: relative;
   }
-
+  //
   .add-button{
     left: 80%;
     margin-right: 20px;
@@ -11,12 +11,13 @@
   }
 
   .list-row{
-    position: relative;
+    //position: relative;
+    //background: transparent;
   }
 
   .list-item{
-    background: transparent;
-    color: #FFF;
+    background-color: #333;
+    //color: #FFF;
   }
   .list-slider{
     background: transparent;

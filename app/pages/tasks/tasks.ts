@@ -25,12 +25,10 @@ export class TasksPage {
   }
 
   ionViewWillEnter(){
-    console.log("View Loaded");
     this.simpleTasks.GetAllTask((result) => {
       if(result){
         let AllFood = this.simpleTasks.AllTask;
         this.FoodList = AllFood;
-        console.log(this.FoodList);
       }else{
         console.log("failed grabbing stuff");
       }
@@ -47,8 +45,9 @@ export class TasksPage {
     let modal = this.modalCtrl.create(TasksAddPage, { service: this.simpleTasks});
 
     modal.onDidDismiss(data => {
-      console.log("Bang Bang");
-      this.refreshData();
+      if(data){
+        this.refreshData();
+      }
     });
 
     modal.present();
@@ -59,15 +58,9 @@ export class TasksPage {
     let alert = this.alertCtrl.create({
       title: `All Set`,
       subTitle: 'Success! You have created a new task!',
-      buttons: [{
-        text: "Ok",
-        handler: data => {
-
-        }
-      }]
+      buttons: ['OK']
     });
     alert.present();
-    console.log("Betterrr");
   }
 
 }

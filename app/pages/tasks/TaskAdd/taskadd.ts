@@ -55,7 +55,7 @@ export class TasksAddPage {
   }
 
   GoBack(){
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(false);
   }
 
   submitTask(){
@@ -64,7 +64,7 @@ export class TasksAddPage {
         if (result) {
           this.DBService.GetAllTask((result2) => {
             if (result2) {
-              this.viewCtrl.dismiss();
+              this.viewCtrl.dismiss(true);
             } else {
               console.log("Failed to grav data");
                 let alert = this.alertCtrl.create({
