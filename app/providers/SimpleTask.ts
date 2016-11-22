@@ -39,9 +39,23 @@ export class SimpleTask {
       );
     }
 
-    AddOneTask(data){
+    AddOneTask(data, callback){
       console.log(data);
-      return this.storage.query(`INSERT INTO my_task (task_name, task_icon , task_description , task_icon) VALUES (?,?,?,?)`, [data.task_name, data.icon ,data.task_desc, data.icon_color]);
+      this.storage.query(`INSERT INTO my_task (task_name, task_icon , task_description , task_icon_color) VALUES (?,?,?,?)`, [data.task_name, data.icon ,data.task_desc, data.icon_color]).then(
+        (data) => {
+          this.GetAllTask(() => {
+            if(data){
+              console.log("All set!!!");
+              callback(true);
+            }else{
+              callback(false);
+            }
+          })
+        }, (err) => {
+          console.log(err);
+          callback(false);
+        }
+      );
     }
 
 

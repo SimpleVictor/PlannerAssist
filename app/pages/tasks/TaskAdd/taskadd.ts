@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import {ViewController, ModalController, AlertController} from 'ionic-angular';
+import {ViewController, ModalController, AlertController, NavParams} from 'ionic-angular';
 import {IconList} from "../IconList/icon-list";
-import {SimpleTask} from "../../../providers/SimpleTask";
+import {TasksPage} from "../tasks";
 
 declare var TweenLite;
 declare var Circ;
 
 @Component({
-  templateUrl: 'build/pages/tasks/TaskAdd/taskadd.html',
-  providers: [SimpleTask]
+  templateUrl: 'build/pages/tasks/TaskAdd/taskadd.html'
 })
 export class TasksAddPage {
 
@@ -22,8 +21,13 @@ export class TasksAddPage {
 
   displayIcon;
 
-  constructor(public viewCtrl: ViewController, public modalCtrl: ModalController, public alertCtrl: AlertController, public simpleTask: SimpleTask) {
-    console.log("works");
+  DBService;
+
+  constructor(public viewCtrl: ViewController, public modalCtrl: ModalController, public alertCtrl: AlertController, public params: NavParams) {
+
+
+    this.DBService= params.get('service');
+
   }
 
 
@@ -56,36 +60,25 @@ export class TasksAddPage {
 
   submitTask(){
     if(this.finalSub.task_name){
-      console.log("Sucess");
-
-      this.simpleTask.AddOneTask(this.finalSub).then(
-        (result) => {
-          console.log("Success adding data");
-          let alert = this.alertCtrl.create({
-            title: `All Set`,
-            subTitle: 'Success! You have created a new task!',
-            buttons: [{
-              text: "Ok",
-              handler: data => {
-                this.viewCtrl.dismiss();
-              }
-            }]
-          });
-          alert.present();
-        }, (err) => {
-          console.log("Failed adding data");
-          let alert = this.alertCtrl.create({
-            title: `Please try again`,
-            subTitle: 'There seem to be a connection problem',
-            buttons: ['OK']
-          });
-          alert.present();
+      this.DBService.AddOneTask(this.finalSub, (result) => {
+        if (result) {
+          this.DBService.GetAllTask((result2) => {
+            if (result2) {
+              this.viewCtrl.dismiss();
+            } else {
+              console.log("Failed to grav data");
+                let alert = this.alertCtrl.create({
+                  title: `Please try again`,
+                  subTitle: 'There seem to be a connection problem',
+                  buttons: ['OK']
+                });
+                alert.present();
+            }
+          })
+        }else{
+          console.log("no");
         }
-      );
-
-
-
-
+      });
     }else{
       let alert = this.alertCtrl.create({
         title: `You ain't done yet =(`,
@@ -94,7 +87,6 @@ export class TasksAddPage {
       });
       alert.present();
     };
-
   }
 
 

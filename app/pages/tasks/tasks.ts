@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, ModalController} from 'ionic-angular';
+import {NavController, ModalController, AlertController} from 'ionic-angular';
 import {SimpleTask} from "../../providers/SimpleTask";
 import {TasksAddPage} from "./TaskAdd/taskadd";
 
@@ -12,15 +12,23 @@ declare var Circ;
 export class TasksPage {
 
   FoodList;
+  testRun;
 
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController, public simpleTask: SimpleTask) {
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController, public simpleTasks: SimpleTask, public alertCtrl: AlertController) {
+
+    this.testRun = this.simpleTasks;
 
   }
 
   ionViewLoaded(){
-    this.simpleTask.GetAllTask((result) => {
+
+  }
+
+  ionViewWillEnter(){
+    console.log("View Loaded");
+    this.simpleTasks.GetAllTask((result) => {
       if(result){
-        let AllFood = this.simpleTask.AllTask;
+        let AllFood = this.simpleTasks.AllTask;
         this.FoodList = AllFood;
         console.log(this.FoodList);
       }else{
@@ -32,14 +40,14 @@ export class TasksPage {
   ionViewDidEnter(){
     let obj = document.getElementById("task-title");
     TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
-    console.log("went back in here");
   }
 
 
   GoToAddPage(){
-    let modal = this.modalCtrl.create(TasksAddPage);
+    let modal = this.modalCtrl.create(TasksAddPage, { service: this.simpleTasks});
 
     modal.onDidDismiss(data => {
+      console.log("Bang Bang");
       this.refreshData();
     });
 
@@ -47,16 +55,19 @@ export class TasksPage {
   }
 
   refreshData(){
+    this.FoodList = this.simpleTasks.AllTask;
+    let alert = this.alertCtrl.create({
+      title: `All Set`,
+      subTitle: 'Success! You have created a new task!',
+      buttons: [{
+        text: "Ok",
+        handler: data => {
 
-    console.log("Went back in here");
-    this.simpleTask.GetAllTask((result) => {
-      if(result){
-        console.log(this.simpleTask.AllTask);
-      }else{
-        console.log("failed grabbing stuff");
-      }
-    })
-
+        }
+      }]
+    });
+    alert.present();
+    console.log("Betterrr");
   }
 
 }

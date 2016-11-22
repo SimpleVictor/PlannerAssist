@@ -20,7 +20,7 @@
   <ion-list class="list-row" *ngIf="FoodList">
     <ion-item-sliding class="list-slider" *ngFor="let i of FoodList">
       <ion-item class="list-item">
-        <ion-icon class="single-icon" name="{{i.task_icon}}" item-left></ion-icon>
+        <ion-icon class="single-icon" [ngStyle]="{'color': '#'+i.task_icon_color}" name="{{i.task_icon}}" item-left></ion-icon>
         <strong>{{i.task_name}}</strong>
         <h4 style="color: #ccc">{{i.task_description}}</h4>
       </ion-item>
