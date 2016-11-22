@@ -17,9 +17,9 @@ import {ChooseIconColor} from "../ChooseIconColor/choose-icon-color";
 <ion-content class="icon-list">
 <ion-row>
     <ion-col><ion-icon style="color: #E4004F" tappable ion-button (click)="chooseIcon('ionic')" class="icon-array-list" name="ionic" color="primary"></ion-icon></ion-col>
-    <ion-col><ion-icon style="color: #019E97" class="icon-array-list" name="logo-angular"></ion-icon></ion-col>
-    <ion-col><ion-icon style="color: #F39801" class="icon-array-list" name="heart" color="danger"></ion-icon></ion-col>
-    <ion-col><ion-icon style="color: #00A0E8" class="icon-array-list" name="ionitron" color="primary"></ion-icon></ion-col>
+    <ion-col><ion-icon style="color: #019E97" tappable ion-button (click)="chooseIcon('logo-angular')" class="icon-array-list" name="logo-angular"></ion-icon></ion-col>
+    <ion-col><ion-icon style="color: #F39801" tappable ion-button (click)="chooseIcon('heart')" class="icon-array-list" name="heart" color="danger"></ion-icon></ion-col>
+    <ion-col><ion-icon style="color: #00A0E8" tappable ion-button (click)="chooseIcon('ionitron')" class="icon-array-list" name="ionitron" color="primary"></ion-icon></ion-col>
 
     <ion-col><ion-icon style="color: #019E97" class="icon-array-list" name="happy" color="vibrant"></ion-icon></ion-col>
     <ion-col><ion-icon style="color: #00A0E8" class="icon-array-list" name="contact"></ion-icon></ion-col>
@@ -79,7 +79,7 @@ export class IconList{
   }
 
   GoBack(){
-    this.vc.dismiss();
+    this.vc.dismiss(false);
   }
 
   chooseIcon(val){
@@ -87,6 +87,13 @@ export class IconList{
 
     profileModal.onDidDismiss(data => {
       console.log(data);
+
+      if(data){
+        this.vc.dismiss(data);
+      }else{
+        console.log("Please choose an Icon");
+      }
+
     });
 
     profileModal.present();

@@ -17,17 +17,26 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list class="list-row">
-    <ion-item class="list-item">
-      <p>Test</p>
-    </ion-item>
-    <ion-item class="list-item">
-      <p>Test</p>
-    </ion-item>
-    <ion-item class="list-item">
-      <p>Test</p>
-    </ion-item>
+  <ion-list class="list-row" *ngIf="FoodList">
+    <ion-item-sliding class="list-slider" *ngFor="let i of FoodList">
+      <ion-item class="list-item">
+        <ion-icon class="single-icon" name="{{i.task_icon}}" item-left></ion-icon>
+        <strong>{{i.task_name}}</strong>
+        <h4 style="color: #ccc">{{i.task_description}}</h4>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="success">
+          <ion-icon name="mail"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
 
 
 

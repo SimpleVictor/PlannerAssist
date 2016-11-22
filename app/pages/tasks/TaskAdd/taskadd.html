@@ -28,7 +28,7 @@
 
     <ion-item class="item-input">
       <ion-label floating>Task's Description</ion-label>
-      <ion-textarea [(ngModel)]="finalSub.task_name" style="color: #fff"></ion-textarea>
+      <ion-textarea [(ngModel)]="finalSub.task_desc" style="color: #fff"></ion-textarea>
     </ion-item>
 
   </ion-list>
@@ -44,7 +44,7 @@
   <ion-list inset>
     <ion-item class="item-input" style="border-bottom: 1px solid white" tappable ion-button (click)="OpenIcons()">
       Icon
-      <ion-icon name="ionic" item-right style="color: #FFF;font-size:3em"></ion-icon>
+      <ion-icon id="displayIcon" name="{{finalSub.icon}}" item-right style="font-size:3em"></ion-icon>
     </ion-item>
 
 

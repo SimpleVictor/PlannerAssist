@@ -12,7 +12,7 @@ declare var Circ;
   <ion-toolbar>
     <ion-title id="add-task-title">Icon's Color</ion-title>
     <ion-buttons>
-      <button class="scan-button" ion-button icon-only (click)="GoBack()">Close</button>
+      <button class="scan-button" ion-button icon-only (click)="GoBack()">Back</button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -30,31 +30,31 @@ declare var Circ;
     </ion-col>
     
     <ion-col>
-      <div id="A2" #A2 (click)="setColor(A2, 'F39801')"  class="color-square" style="background-color: #F39801" ></div>    
+      <div #A2 (click)="setColor(A2, 'F39801')"  class="color-square" style="background-color: #F39801" ></div>    
     </ion-col>
     
     <ion-col>
-      <div id="A3" class="color-square" style="background-color: #019E97"></div>    
+      <div #A3 (click)="setColor(A3, '019E97')" class="color-square" style="background-color: #019E97"></div>    
     </ion-col>
     
     <ion-col>
-      <div id="A4" class="color-square" style="background-color: #00A0E8"></div>    
+      <div #A4 (click)="setColor(A4, '00A0E8')" class="color-square" style="background-color: #00A0E8"></div>    
     </ion-col>
     
     <ion-col>
-      <div id="B1" class="color-square" style="background-color: #E82200"></div>    
+      <div #B1 (click)="setColor(B1, 'E82200')" class="color-square" style="background-color: #E82200"></div>    
     </ion-col>
     
     <ion-col>
-      <div id="B2" class="color-square" style="background-color: #42FF9D"></div>    
+      <div #B2 (click)="setColor(B2, '42FF9D')" class="color-square" style="background-color: #42FF9D"></div>    
     </ion-col>
     
     <ion-col>
-      <div id="B3" class="color-square" style="background-color: #FB946E"></div>    
+      <div #B3 (click)="setColor(B3, 'FB946E')" class="color-square" style="background-color: #FB946E"></div>    
     </ion-col>
     
     <ion-col>
-      <div id="B4" class="color-square" style="background-color: #F4FFE4"></div>    
+      <div #B4 (click)="setColor(B4, 'F4FFE4')" class="color-square" style="background-color: #F4FFE4"></div>    
     </ion-col>
   </ion-row>
   
@@ -114,6 +114,13 @@ export class ChooseIconColor {
     // console.log(this.finalSub);
     console.log(this.icon);
     console.log(this.currentColor);
+
+    let data = {
+      icon: this.icon,
+      color: this.currentColor
+    };
+
+    this.viewCtrl.dismiss(data);
   }
 
 
