@@ -25,19 +25,19 @@
 
     <ion-item class="task-input" >
       <ion-label class="task-input-label" floating>Start Time</ion-label>
-      <ion-input (focus)="openStartTime()" type="text"></ion-input>
-      <ion-datetime [hidden]="true" #dateTime1 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>
+      <ion-input #dateInput1 (focus)="openStartTime()" type="text"></ion-input>
+      <ion-datetime [hidden]="true" #dateTime1 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange1 (ionChange)="dateChanged1(myChange1)"></ion-datetime>
     </ion-item>
 
     <ion-item class="task-input" style="border-bottom:1px solid #fff" >
       <ion-label class="task-input-label" floating>End Time</ion-label>
-      <ion-input (focus)="openEndTime()" type="text"></ion-input>
-      <ion-datetime [hidden]="true" #dateTime2 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>
+      <ion-input #dateInput2 (focus)="openEndTime()" type="text"></ion-input>
+      <ion-datetime [hidden]="true" #dateTime2 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange2 (ionChange)="dateChanged2(myChange2)"></ion-datetime>
     </ion-item>
 
   </ion-list>
 
-  <!--<ion-item>-->
+  <!--<ion-item [hidden]="true">-->
   <!--<div class="date-input">-->
     <!--<ion-label >Start Time</ion-label>-->
     <!--<ion-datetime #dateTime minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>-->
@@ -46,7 +46,7 @@
 
 
   <!--<button ion-button tappable (click)="openDate()"></button>-->
-  <button ion-button tappable block color="danger" style="position: absolute; bottom: 10%">Next</button>
+  <button (click)="AddHomeTask()" ion-button tappable block color="danger" style="position: absolute; bottom: 10%">Next</button>
 
 </ion-content>
 

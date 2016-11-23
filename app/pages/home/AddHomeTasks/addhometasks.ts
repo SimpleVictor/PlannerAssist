@@ -13,6 +13,8 @@ export class AddHomeTask {
   @ViewChild('dateTime1') sTime1;
   @ViewChild('dateTime2') sTime2;
   @ViewChild('onInput') onInp;
+  @ViewChild('dateInput1') dateInput1;
+  @ViewChild('dateInput2') dateInput2;
 
   finalTaskList;
 
@@ -23,6 +25,12 @@ export class AddHomeTask {
   takeOutFirstInput: boolean = true;
 
   zone;
+
+  militaryStart;
+  militaryEnd;
+
+  timeText1;
+  timeText2;
 
 
   constructor(public navCtrl: NavController, public vc: ViewController, public modalCtrl: ModalController, public navParams: NavParams) {
@@ -38,10 +46,23 @@ export class AddHomeTask {
     // let check = document.getElementById("checkThisGuy");
     // console.log(check);
 
+
   }
 
-  dateChanged(data){
+  dateChanged1(data){
     console.log(data);
+    this.militaryStart = data.getValue();
+    this.timeText1 = data._text;
+    this.dateInput1.value = data._text;
+
+
+  }
+
+  dateChanged2(data){
+    console.log(data);
+    this.militaryEnd = data.getValue();
+    this.timeText2 = data._text;
+    this.dateInput2.value = data._text;
   }
 
 
@@ -85,11 +106,34 @@ export class AddHomeTask {
 
   openStartTime(){
     console.log("start");
+    this.sTime1.open();
   }
 
-  openEndTime(){
 
+
+  openEndTime(){
+    this.sTime2.open();
     console.log("end");
+  }
+
+  AddHomeTask(){
+    let obj = {
+      startTime: this.timeText1,
+      endTime: this.timeText2,
+      militaryStart: this.militaryStart,
+      militaryEnd: this.militaryEnd,
+      currentTask: this.myCurrentTask;
+    }
+
+
+
+    console.log('Done');
+    console.log(this.militaryStart);
+    console.log(this.militaryEnd);
+    console.log(this.timeText1);
+    console.log(this.timeText2);
+    console.log(this.myTasks);
+    console.log(this.myCurrentTask);
   }
 
 
