@@ -59,6 +59,13 @@ export class SimpleTask {
     }
 
 
+   DeleteOneTask(id){
+     let sql = `DELETE FROM my_task WHERE id='${id}'`;
+     return this.storage.query(sql);
+   }
+
+
+
 
 
 

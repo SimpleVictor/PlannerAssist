@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align:center;" id="home-title">Home</ion-title>
+    <ion-title style="text-align:center;" id="home-title">Homeeeee</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,14 +8,13 @@
 <ion-content>
 
   <ion-row>
-    <ion-col><button block ion-button tappable (click)="submitTask()" color="secondary" small><span class="button-text">Add</span></button></ion-col>
-    <ion-col><button block ion-button tappable (click)="submitTask()" color="danger" small><span class="button-text">Clear</span></button></ion-col>
+    <ion-col><button block ion-button tappable (click)="GoToAddLocation()" color="secondary" small><span class="button-text" >Add</span></button></ion-col>
+    <ion-col><button block ion-button tappable (click)="ClearPage()" color="danger" small><span class="button-text">Clear</span></button></ion-col>
   </ion-row>
-
 
   <div class="no-task-message">
     <h1 class="no-task-message-one" style="font-size: 2.5rem">Oh No!</h1>
-    <h1 class="no-task-message-two" style="font-size: 2.5rem">You have nothing planned for today.</h1>
+    <h1 class="no-task-message-two">You have nothing planned for today.</h1>
     <img class="sad-face" src="img/face.png">
   </div>
 

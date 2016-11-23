@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align:center;" id="home-title">Add Task</ion-title>
+    <ion-buttons>
+      <button class="scan-button" ion-button icon-only (click)="GoBack()">Back</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="addhometask-container">
+
+
+  <ion-list inset>
+    <ion-item class="task-input" >
+      <ion-label class="task-input-label" floating>Choose A Task</ion-label>
+      <ion-input (focus)="openTaskList()" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="task-input" >
+      <ion-label class="task-input-label" floating>Start Time</ion-label>
+      <ion-input (focus)="openStartTime()" type="text"></ion-input>
+      <ion-datetime [hidden]="true" #dateTime1 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="task-input" style="border-bottom:1px solid #fff" >
+      <ion-label class="task-input-label" floating>End Time</ion-label>
+      <ion-input (focus)="openEndTime()" type="text"></ion-input>
+      <ion-datetime [hidden]="true" #dateTime2 minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+  <!--<ion-item>-->
+  <!--<div class="date-input">-->
+    <!--<ion-label >Start Time</ion-label>-->
+    <!--<ion-datetime #dateTime minuteValues="0,15,30, 45" displayFormat="h:mm A" pickerFormat="h mm A" #myChange (ionChange)="dateChanged(myChange.getValue())"></ion-datetime>-->
+  <!--</div>-->
+  <!--</ion-item>-->
+
+
+  <!--<button ion-button tappable (click)="openDate()"></button>-->
+  <button ion-button tappable block color="danger" style="position: absolute; bottom: 10%">Next</button>
+
+</ion-content>
+

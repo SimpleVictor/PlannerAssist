@@ -63,4 +63,49 @@ export class TasksPage {
     alert.present();
   }
 
+  DeleteTask(id){
+    console.log(id);
+    this.simpleTasks.DeleteOneTask(id).then(
+      (data) => {
+        console.log("sucess!");
+        this.simpleTasks.GetAllTask((result) => {
+          if(result){
+            let AllFood = this.simpleTasks.AllTask;
+            this.FoodList = AllFood;
+            let alert = this.alertCtrl.create({
+              title: `Deleted`,
+              subTitle: 'Bye bye task',
+              buttons: ['OK']
+            });
+            alert.present();
+          }else{
+            console.log("failed grabbing stuff");
+          }
+        })
+      }, (err) => {
+        console.log("Failed to delete");
+      }
+    )
+
+  }
+
+  EditTask(id){
+    console.log(id);
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
