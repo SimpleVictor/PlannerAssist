@@ -12,13 +12,13 @@
 
 
   <ion-list inset>
-    <ion-item class="task-input" >
-      <ion-label id="inputLabel" class="task-input-label">Bruhh</ion-label>
+    <ion-item id="spinHimIn" style="opacity: 0" class="task-input" *ngIf="!takeOutFirstInput">
+      <ion-label id="inputLabel" class="task-input-label">{{myCurrentTask.task_name}}</ion-label>
       <!--<ion-icon class="single-icon" [ngStyle]="{'color': '#'+i.task_icon_color}" name="{{i.task_icon}}" item-left></ion-icon>-->
-      <ion-icon class="single-icon" name="leaf" item-left></ion-icon>
+      <ion-icon class="single-icon" [ngStyle]="{'color': '#'+myCurrentTask.task_icon_color}" name="{{myCurrentTask.task_icon}}" item-left></ion-icon>
     </ion-item>
 
-    <ion-item class="task-input" >
+    <ion-item class="task-input" *ngIf="takeOutFirstInput">
       <ion-label class="task-input-label" floating>Choose A Task</ion-label>
       <ion-input id="checkThisGuy" (focus)="openTaskList()" type="text"></ion-input>
     </ion-item>
