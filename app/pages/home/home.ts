@@ -15,10 +15,25 @@ export class HomePage {
 
   MessageAtAll:boolean = true;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,public simpleTask: SimpleTask, public simpleHome: SimpleHome, public simpleSaved: SimpleSaved, public alertCtrl: AlertController) {
+  SavedTasks;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public simpleHome: SimpleHome, public simpleSaved: SimpleSaved, public alertCtrl: AlertController, public simpleTasks: SimpleTask) {
 
   }
 
+  //Before the page loads
+  ionViewWillEnter(){
+    this.simpleTasks.GetAllTask((result) => {
+      if(result){
+        this.SavedTasks = this.simpleTasks.AllTask;
+        console.log(this.SavedTasks);
+      }else{
+        console.log("Failed to hrab data");
+      }
+    })
+  }
+
+  //After the page loads
   ionViewDidEnter(){
     let obj = document.getElementById("home-title");
     TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
@@ -30,7 +45,7 @@ export class HomePage {
   }
 
   GoToAddLocation(){
-    let modal = this.modalCtrl.create(AddHomeTask);
+    let modal = this.modalCtrl.create(AddHomeTask, {AllTask: this.SavedTasks});
 
     modal.onDidDismiss(data => {
       if(data){

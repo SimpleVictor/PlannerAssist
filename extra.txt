@@ -1,0 +1,4 @@
+1. Fix the keybaord popup when we click on the input field on the home page
+2. Edit the tasks
+3. Change the icons to make it more sense
+4.
