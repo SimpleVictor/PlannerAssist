@@ -26,6 +26,10 @@ export class AddHomeTask {
 
   ionViewDidEnter(){
     // console.log(this.onInp);
+
+    // let check = document.getElementById("checkThisGuy");
+    // console.log(check);
+
   }
 
   dateChanged(data){
