@@ -8,7 +8,7 @@ export class SimpleHome {
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, home_task_order TEXT, home_task_hour_text TEXT, home_task_start_time TEXT, home_task_end_time TEXT)')
+    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, what_task_id TEXT, home_task_time_text TEXT, start_time_hour TEXT, start_time_minute TEXT ,end_time_hour TEXT, end_time_minute TEXT, ampm TEXT)')
       .then(
         result => {
           console.log(result);
@@ -20,14 +20,30 @@ export class SimpleHome {
       );
   }
 
-  //home_task_order
-  //home_task_hour_text
-  //home_task_start_time
-  //home_task_end_time
+  //what_task_id
+  //home_task_time_text
+  //start_time_hour
+  //start_time_minute
+  //end_time_hour
+  //end_time_minute
+  //ampm
 
-  AddHomeTask(obj, taskData){
+  AddHomeTask(result){
+
+    let obj = {
+      task_id: result.task_id,
+      timeTextStart: result.timeTextStart,
+      timeTextEnd: result.timeTextEnd,
+      startHour: result.startHour,
+      startMinute: result.StartMinute,
+      startAMPM: result.startAMPM,
+      endHour: result.endHour,
+      endMinute: result.endMinute,
+      endAMPM: result.endAMPM
+    };
+
     console.log(obj);
-    console.log(taskData);
+    // console.log(taskData);
   }
 
 }

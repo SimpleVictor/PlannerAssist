@@ -118,22 +118,19 @@ export class AddHomeTask {
 
   AddHomeTask(){
     let obj = {
-      startTime: this.timeText1,
-      endTime: this.timeText2,
-      militaryStart: this.militaryStart,
-      militaryEnd: this.militaryEnd,
-      currentTask: this.myCurrentTask;
-    }
+      task_id: this.myCurrentTask.id,
+      timeTextStart: this.timeText1,
+      timeTextEnd: this.timeText2,
+      startHour: this.militaryStart.hour,
+      startMinute: this.militaryStart.minute,
+      startAMPM: this.militaryStart.ampm,
+      endHour: this.militaryEnd.hour,
+      endMinute: this.militaryEnd.minute,
+      endAMPM: this.militaryEnd.ampm
+    };
 
+    console.log(obj);
 
-
-    console.log('Done');
-    console.log(this.militaryStart);
-    console.log(this.militaryEnd);
-    console.log(this.timeText1);
-    console.log(this.timeText2);
-    console.log(this.myTasks);
-    console.log(this.myCurrentTask);
   }
 
 
