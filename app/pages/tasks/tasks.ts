@@ -90,7 +90,12 @@ export class TasksPage {
   }
 
   EditTask(id){
-    console.log(id);
+    let alert = this.alertCtrl.create({
+      title: `Sorry`,
+      subTitle: 'The save button is not yet functional. Please wait for the next update',
+      buttons: ["Wow"]
+    });
+    alert.present();
   }
 
 }

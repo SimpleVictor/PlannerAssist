@@ -59,4 +59,29 @@ export class SimpleHome {
 
   }
 
+
+  DeleteAllData(callback){
+
+    this.storage.query(`DROP TABLE IF EXISTS my_home`).then(
+      (data) => {
+        console.log("Sucess deleting everything in draft!");
+        this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, timeTextStart TEXT, timeTextEnd TEXT, startHour TEXT ,startMinute TEXT, startAMPM TEXT, endHour TEXT, endMinute TEXT, endAMPM TEXT)').then(
+          result => {
+            console.log("Created Table draft_table Successfully");
+            callback(true);
+          }, err => {
+            console.log("Failed Making Table draft_table");
+            console.log(err);
+            callback(false);
+          }
+        );
+      }, (err) => {
+        console.log("ERROR DELETING food_table!");
+        callback(false);
+        console.log(err);
+      }
+    );
+
+  }
+
 }

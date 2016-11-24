@@ -9,6 +9,7 @@
 
   <ion-row>
     <ion-col><button block ion-button tappable (click)="GoToAddLocation()" color="secondary" small><span class="button-text" >Add</span></button></ion-col>
+    <ion-col><button block ion-button tappable (click)="SaveButton()"  color="primary" small><span class="button-text" >Save</span></button></ion-col>
     <ion-col><button block ion-button tappable (click)="ClearPage()" color="danger" small><span class="button-text">Clear</span></button></ion-col>
   </ion-row>
 
@@ -20,198 +21,213 @@
 
   <div *ngIf="!MessageAtAll">
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">12 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">12 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
+
+    <div id="12am" *ngIf="HomeTasks.length >= 1">
+      <ion-list no-lines *ngFor="let i of HomeTasks">
+        <ion-item style="background-color: #333">
+          <ion-icon class="single-icon" [ngStyle]="{'color': '#'+SavedTasks[i.id].task_icon_color}" name="{{SavedTasks[i.id].task_icon}}" item-left></ion-icon>
+          <strong style="color:#FFF">{{SavedTasks[i.id].task_name}}</strong>
+          <h4 style="color: #ccc">{{SavedTasks[i.id].task_description}}</h4>
+          <h2 item-right style="margin-right: 5px;color:#fff">{{i.timeTextStart}} - {{i.timeTextEnd}}</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngIf="am1.length >= 1">
+      <!--<h1>Bruh</h1>-->
+    </div>
 
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">1 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">1 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">2 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">2 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">3 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">3 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">4 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">4 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">5 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">5 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">6 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">6 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">7 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">7 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">8 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">8 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">9 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">9 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">10 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">10 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">11 AM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">11 AM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">12 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">12 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">1 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">1 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">2 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">2 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">3 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">3 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">4 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">4 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">5 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">5 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">6 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">6 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">7 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">7 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">8 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">8 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">9 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">9 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">10 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">10 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
-    <ion-grid>
-      <ion-row>
-        <ion-col width-33 class="line-side"></ion-col>
-        <ion-col width-33 class="small-title" style="color: #666666">11 PM</ion-col>
-        <ion-col width-33 class="line-side"></ion-col>
-      </ion-row>
-    </ion-grid>
+    <!--<ion-grid>-->
+      <!--<ion-row>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+        <!--<ion-col width-33 class="small-title" style="color: #666666">11 PM</ion-col>-->
+        <!--<ion-col width-33 class="line-side"></ion-col>-->
+      <!--</ion-row>-->
+    <!--</ion-grid>-->
 
   </div>
 

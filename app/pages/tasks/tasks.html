@@ -25,11 +25,11 @@
         <h4 style="color: #ccc">{{i.task_description}}</h4>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="success">
-          <ion-icon name="mail"></ion-icon>
+        <button ion-button color="success" tappable (click)="EditTask(i.id)">
+          <ion-icon name="open"></ion-icon>
           Edit
         </button>
-        <button ion-button color="danger" (click)="DeleteTask(i.id)">
+        <button ion-button color="danger" tappable (click)="DeleteTask(i.id)">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
