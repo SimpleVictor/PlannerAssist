@@ -86,6 +86,7 @@ export class HomePage {
       if(result){
         this.HomeTasks = this.simpleHome.AllHome;
         console.log(this.HomeTasks);
+        // console.log(Number.parseInt(this.HomeTasks[1].task_id));
         this.zone.run(() => {
           // for (let i = 0; i < this.HomeTasks.length; i++) {
           //   this.am12.push(this.HomeTasks[i]);

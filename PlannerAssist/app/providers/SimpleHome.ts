@@ -11,7 +11,7 @@ export class SimpleHome {
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, timeTextStart TEXT, timeTextEnd TEXT, startHour TEXT ,startMinute TEXT, startAMPM TEXT, endHour TEXT, endMinute TEXT, endAMPM TEXT)')
+    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, task_id INT, timeTextStart TEXT, timeTextEnd TEXT, startHour TEXT ,startMinute TEXT, startAMPM TEXT, endHour TEXT, endMinute TEXT, endAMPM TEXT)')
       .then(
         result => {
           console.log(result);
@@ -40,7 +40,7 @@ export class SimpleHome {
 
   AddHomeTask(result){
     let obj = {
-      task_id: result.task_id,
+      task_id: Number.parseInt(result.task_id),
       timeTextStart: result.timeTextStart,
       timeTextEnd: result.timeTextEnd,
       startHour: result.startHour,

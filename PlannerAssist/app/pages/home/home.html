@@ -32,9 +32,9 @@
     <div id="12am" *ngIf="HomeTasks.length >= 1">
       <ion-list no-lines *ngFor="let i of HomeTasks">
         <ion-item style="background-color: #333">
-          <ion-icon class="single-icon" [ngStyle]="{'color': '#'+SavedTasks[i.id].task_icon_color}" name="{{SavedTasks[i.id].task_icon}}" item-left></ion-icon>
-          <strong style="color:#FFF">{{SavedTasks[i.id].task_name}}</strong>
-          <h4 style="color: #ccc">{{SavedTasks[i.id].task_description}}</h4>
+          <ion-icon class="single-icon" [ngStyle]="{'color': '#'+SavedTasks[i.task_id].task_icon_color}" name="{{SavedTasks[i.task_id].task_icon}}" item-left></ion-icon>
+          <strong style="color:#FFF">{{SavedTasks[i.task_id].task_name}}</strong>
+          <h4 style="color: #ccc">{{SavedTasks[i.task_id].task_description}}</h4>
           <h2 item-right style="margin-right: 5px;color:#fff">{{i.timeTextStart}} - {{i.timeTextEnd}}</h2>
         </ion-item>
       </ion-list>

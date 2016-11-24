@@ -1,5 +1,5 @@
 import {Component, ViewChild, NgZone} from '@angular/core';
-import {NavController, ViewController, ModalController, NavParams} from 'ionic-angular';
+import {NavController, ViewController, ModalController, NavParams, AlertController} from 'ionic-angular';
 import {TaskList} from "../TaskList/tasklist";
 
 declare var TweenLite;
@@ -32,8 +32,10 @@ export class AddHomeTask {
   timeText1;
   timeText2;
 
+  useThisIndex;
 
-  constructor(public navCtrl: NavController, public vc: ViewController, public modalCtrl: ModalController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public vc: ViewController, public modalCtrl: ModalController, public navParams: NavParams, public alertCtrl: AlertController) {
 
     this.myTasks = this.navParams.get("AllTask");
     this.zone = new NgZone({enableLongStackTrace: false});
@@ -86,6 +88,7 @@ export class AddHomeTask {
         this.zone.run(() => {
           this.takeOutFirstInput = false;
           this.myCurrentTask = this.myTasks[data.index];
+          this.useThisIndex = data.index;
           console.log(this.myCurrentTask);
 
           setTimeout(() => {
@@ -117,18 +120,32 @@ export class AddHomeTask {
   }
 
   AddHomeTask(){
-    let obj = {
-      task_id: this.myCurrentTask.id,
-      timeTextStart: this.timeText1,
-      timeTextEnd: this.timeText2,
-      startHour: this.militaryStart.hour,
-      startMinute: this.militaryStart.minute,
-      startAMPM: this.militaryStart.ampm,
-      endHour: this.militaryEnd.hour,
-      endMinute: this.militaryEnd.minute,
-      endAMPM: this.militaryEnd.ampm
-    };
-    this.vc.dismiss(obj);
+    if(this.useThisIndex && this.militaryStart && this.militaryEnd){
+      let obj = {
+        // task_id: this.myCurrentTask.id,
+        task_id: Number.parseInt(this.useThisIndex),
+        timeTextStart: this.timeText1,
+        timeTextEnd: this.timeText2,
+        startHour: this.militaryStart.hour,
+        startMinute: this.militaryStart.minute,
+        startAMPM: this.militaryStart.ampm,
+        endHour: this.militaryEnd.hour,
+        endMinute: this.militaryEnd.minute,
+        endAMPM: this.militaryEnd.ampm
+      };
+      this.vc.dismiss(obj);
+    }else{
+      let alert = this.alertCtrl.create({
+        title: `Whoa there`,
+        subTitle: 'Please fill out all requirements',
+        buttons: ["okay"]
+      });
+      alert.present();
+    }
+
+    console.log(this.useThisIndex);
+
+
 
   }
 
