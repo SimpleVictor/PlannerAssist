@@ -4,11 +4,14 @@ import {SqlStorage, Storage} from 'ionic-angular';
 @Injectable()
 export class SimpleHome {
 
+
   storage: Storage = null;
+
+  AllHome:any[] = [];
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, what_task_id TEXT, home_task_time_text TEXT, start_time_hour TEXT, start_time_minute TEXT ,end_time_hour TEXT, end_time_minute TEXT, ampm TEXT)')
+    this.storage.query('CREATE TABLE IF NOT EXISTS my_home (id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, timeTextStart TEXT, timeTextEnd TEXT, startHour TEXT ,startMinute TEXT, startAMPM TEXT, endHour TEXT, endMinute TEXT, endAMPM TEXT)')
       .then(
         result => {
           console.log(result);
@@ -20,16 +23,22 @@ export class SimpleHome {
       );
   }
 
-  //what_task_id
-  //home_task_time_text
-  //start_time_hour
-  //start_time_minute
-  //end_time_hour
-  //end_time_minute
-  //ampm
+  GrabAllHomeTask(callback){
+    this.AllHome = [];
+    this.storage.query('SELECT * FROM my_home').then(
+      (data) => {
+        for(let i = 0; i < data.res.rows.length; i++){
+          this.AllHome.push(data.res.rows.item(i));
+        };
+        callback(true);
+      }, (err) => {
+        console.log("Failed grabbing data");
+        callback(false);
+      }
+    );
+  }
 
   AddHomeTask(result){
-
     let obj = {
       task_id: result.task_id,
       timeTextStart: result.timeTextStart,
@@ -41,9 +50,13 @@ export class SimpleHome {
       endMinute: result.endMinute,
       endAMPM: result.endAMPM
     };
-
     console.log(obj);
-    // console.log(taskData);
+
+
+    let sql = `INSERT INTO my_home (task_id, timeTextStart, timeTextEnd, startHour, startMinute, startAMPM, endHour, endMinute, endAMPM) VALUES (?,?,?,?,?,?,?,?,?)`;
+    return this.storage.query(sql , [obj.task_id, obj.timeTextStart, obj.timeTextEnd, obj.startHour, obj.startMinute, obj.startAMPM, obj.endHour, obj.endMinute, obj.endAMPM]);
+
+
   }
 
 }

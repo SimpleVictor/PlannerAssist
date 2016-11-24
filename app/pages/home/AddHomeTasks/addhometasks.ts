@@ -73,7 +73,7 @@ export class AddHomeTask {
 
 
   GoBack(){
-    this.vc.dismiss();
+    this.vc.dismiss(false);
   }
 
   openTaskList(){
@@ -128,8 +128,7 @@ export class AddHomeTask {
       endMinute: this.militaryEnd.minute,
       endAMPM: this.militaryEnd.ampm
     };
-
-    console.log(obj);
+    this.vc.dismiss(obj);
 
   }
 

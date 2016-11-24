@@ -16,6 +16,7 @@ export class HomePage {
   MessageAtAll:boolean = true;
 
   SavedTasks;
+  HomeTasks;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public simpleHome: SimpleHome, public simpleSaved: SimpleSaved, public alertCtrl: AlertController, public simpleTasks: SimpleTask) {
 
@@ -26,6 +27,7 @@ export class HomePage {
     this.simpleTasks.GetAllTask((result) => {
       if(result){
         this.SavedTasks = this.simpleTasks.AllTask;
+        this.GrabAllData();
         console.log(this.SavedTasks);
       }else{
         console.log("Failed to hrab data");
@@ -37,6 +39,7 @@ export class HomePage {
   ionViewDidEnter(){
     let obj = document.getElementById("home-title");
     TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
+    this.GrabAllData();
   }
 
   dateChanged(data){
@@ -44,12 +47,40 @@ export class HomePage {
     console.log("hey");
   }
 
+
+  GrabAllData(){
+    this.simpleHome.GrabAllHomeTask((result) => {
+      if(result){
+        this.HomeTasks = this.simpleHome.AllHome
+        if(this.HomeTasks.length >= 1){
+          this.MessageAtAll = false;
+        }
+      }
+    })
+  }
+
   GoToAddLocation(){
     let modal = this.modalCtrl.create(AddHomeTask, {AllTask: this.SavedTasks});
 
     modal.onDidDismiss(data => {
       if(data){
-        // this.refreshData();
+        this.simpleHome.AddHomeTask(data).then(
+          (data) => {
+            let alert = this.alertCtrl.create({
+              title: `Success!`,
+              subTitle: 'Enjoy',
+              buttons: ["OK"]
+            });
+            alert.present();
+          }, (err) => {
+            let alert = this.alertCtrl.create({
+              title: `ERROR`,
+              subTitle: 'Error with the DB',
+              buttons: ["OK"]
+            });
+            alert.present();
+          }
+        );
       }
     });
 
