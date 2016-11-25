@@ -4,7 +4,7 @@ import {TaskList} from "../TaskList/tasklist";
 
 declare var TweenLite;
 declare var Circ;
-
+declare var cordova;
 @Component({
   templateUrl: 'build/pages/home/AddHomeTasks/addhometasks.html',
 })
@@ -108,19 +108,24 @@ export class AddHomeTask {
   }
 
   openStartTime(){
-    console.log("start");
     this.sTime1.open();
+    console.log("start");
+    // cordova.plugins.Keyboard.close();
+
   }
 
 
 
   openEndTime(){
     this.sTime2.open();
+    // cordova.plugins.Keyboard.close();
     console.log("end");
   }
 
   AddHomeTask(){
-    if(this.useThisIndex && this.militaryStart && this.militaryEnd){
+    console.log('######');
+    console.log(this.useThisIndex, this.militaryStart, this.militaryEnd);
+    if(this.myCurrentTask && this.militaryStart && this.militaryEnd){
       let obj = {
         // task_id: this.myCurrentTask.id,
         task_id: Number.parseInt(this.useThisIndex),

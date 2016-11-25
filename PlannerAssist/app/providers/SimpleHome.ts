@@ -40,11 +40,11 @@ export class SimpleHome {
 
   AddHomeTask(result){
     let obj = {
-      task_id: Number.parseInt(result.task_id),
+      task_id: result.task_id,
       timeTextStart: result.timeTextStart,
       timeTextEnd: result.timeTextEnd,
       startHour: result.startHour,
-      startMinute: result.StartMinute,
+      startMinute: result.startMinute,
       startAMPM: result.startAMPM,
       endHour: result.endHour,
       endMinute: result.endMinute,

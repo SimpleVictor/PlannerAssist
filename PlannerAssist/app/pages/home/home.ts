@@ -121,6 +121,7 @@ export class HomePage {
             });
             alert.present();
           }, (err) => {
+            console.log(err);
             let alert = this.alertCtrl.create({
               title: `ERROR`,
               subTitle: 'Error with the DB',
